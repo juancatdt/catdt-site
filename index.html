@@ -121,6 +121,39 @@
     color: var(--muted);
     font-size: 0.95rem;
   }
+
+/* Download CTAs (minimal, PDF-aligned) */
+.downloads{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 10px;
+}
+
+.download{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.98rem;
+  background: #ffffff;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.download:hover{
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.download span{
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+  
 </style>
 
 
