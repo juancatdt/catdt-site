@@ -4,204 +4,125 @@ i<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CatDT</title>
-  <style>
- :root{
-  /* === Brand colors (CatDT) === */
-  --bg: #ffffff;
-  --surface: #f5f8fc;
-  --text: #0f172a;
-  --muted: #475569;
-  --border: #e2e8f0;
+<style>
+  :root{
+    /* Match the deck’s vibe: teal → deep blue gradient, light-blue accents */
+    --ink: #111318;
+    --muted: #5b6472;
+    --rule: #e6e9ef;
 
-  /* Blues */
-  --blue-dark: #0b1f3b;   /* deep navy */
-  --blue-mid:  #0f3c6e;   /* medium blue */
-  --blue-light:#4da3ff;   /* accent / subtitles */
+    --accent: #56a9ff; /* light blue subtitles like the deck */
+    --gradL: #2aa9b0;  /* teal-ish */
+    --gradR: #2b2a7a;  /* deep blue/purple */
+    --bg: #ffffff;
 
-  --primary: var(--blue-mid);
-  --primary-2: #0a4fe0;
+    --maxw: 980px;
+  }
 
-  --radius: 18px;
-  --shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-  --maxw: 920px;
-}
-
-
-  * { box-sizing: border-box; }
+  *{ box-sizing: border-box; }
 
   body{
     margin: 0;
-    background: radial-gradient(1200px 800px at 20% -10%, rgba(11,95,255,0.08), transparent 60%),
-                radial-gradient(1000px 700px at 90% 10%, rgba(11,95,255,0.06), transparent 55%),
-                var(--bg);
-    color: var(--text);
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
     line-height: 1.6;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   }
 
-  .container{
+  /* Top gradient bar, like slide 1 */
+  .hero{
+    background: linear-gradient(90deg, var(--gradL), var(--gradR));
+    color: #fff;
+    padding: 56px 0 40px;
+  }
+  .wrap{
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 56px 20px 80px;
+    padding: 0 22px;
   }
 
-  header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
+  h1{
+    margin: 0 0 10px;
+    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
-  .brand{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
+  .hero h2{
+    margin: 0 0 18px;
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    font-weight: 600;
+    line-height: 1.25;
   }
-
- .mark{
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--blue-dark),
-    var(--blue-mid),
-    var(--blue-light)
-  );
-  box-shadow: 0 8px 18px rgba(15, 60, 110, 0.35);
-}
-
-
-  .brand-text{
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-    min-width: 0;
-  }
-
-  .brand-text strong{
-    font-size: 0.95rem;
-    letter-spacing: 0.2px;
-  }
-  .brand-text span{
-    font-size: 0.85rem;
-    color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .actions{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    color: var(--text);
-    background: #fff;
-  }
-
-  .btn.primary{
-    background: var(--primary);
-    color: #fff;
-    border-color: transparent;
-  }
-  .btn.primary:hover{ background: var(--primary-2); }
-
-  .hero{
-  margin-top: 28px;
-  padding: 42px 28px;
-  border-radius: calc(var(--radius) + 6px);
-  background: linear-gradient(
-    135deg,
-    var(--blue-dark),
-    var(--blue-mid)
-  );
-  color: #ffffff;
-  box-shadow: var(--shadow);
-}
-
-
- h1{
-  margin: 0 0 10px;
-  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
-  letter-spacing: -0.02em;
-  color: #ffffff;
-}
-
 
   .tagline{
-    margin: 0 0 14px;
-    font-size: 1.2rem;
+    margin: 0 0 16px;
+    font-size: 1.05rem;
+    opacity: 0.95;
+    font-style: italic; /* like slide 1 */
+  }
+
+  .meta{
+    margin-top: 12px;
+    font-size: 1.02rem;
+    opacity: 0.95;
+  }
+  .meta a{ color: #fff; text-decoration: underline; }
+
+  main{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 34px 22px 72px;
+  }
+
+  section{
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .kicker{
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.02rem;
+  }
+
+  p{
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.03rem;
+  }
+
+  .muted{
     color: var(--muted);
   }
 
-  .lead{
-    margin: 0;
-    font-size: 1.05rem;
-  }
-
-  .grid{
-    margin-top: 22px;
+  /* Optional: simple 2-column blocks (like the deck’s clean columns) */
+  .cols{
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 12px;
+  }
+  @media (min-width: 900px){
+    .cols{ grid-template-columns: 1fr 1fr 1fr; }
   }
 
-  .card{
-    grid-column: span 12;
-    padding: 18px 18px;
-    border-radius: var(--radius);
-    background: var(--surface);
-    border: 1px solid var(--border);
+  ul{
+    margin: 10px 0 0 18px;
+    padding: 0;
   }
-
- .card h2{
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-  letter-spacing: 0.3px;
-  color: var(--blue-light);
-  font-weight: 600;
-}
-
-
-.card p{
-  margin: 0;
-  color: var(--text);
-  font-size: 1.02rem;
-}
-
-
-  @media (min-width: 860px){
-    .card.half{ grid-column: span 6; }
-  }
+  li{ margin: 6px 0; }
 
   footer{
-    margin-top: 34px;
-    padding-top: 18px;
-    border-top: 1px solid var(--border);
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 18px 22px 40px;
     color: var(--muted);
     font-size: 0.95rem;
   }
-
-  a { color: var(--primary); }
 </style>
+
 
 </head>
 <body>
