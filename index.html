@@ -5,48 +5,181 @@ i<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CatDT</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #111;
-      background: #ffffff;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      margin-top: 3rem;
-      font-size: 1.6rem;
-    }
-    p {
-      font-size: 1.1rem;
-      margin-top: 1rem;
-    }
-    .tagline {
-      font-size: 1.3rem;
-      color: #444;
-    }
-    .footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    a {
-      color: #0056b3;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  :root{
+    /* === Brand knobs (edit these to match your materials) === */
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --text: #111318;
+    --muted: #4b5563;
+    --border: #e5e7eb;
+    --primary: #0b5fff;   /* change to your brand accent */
+    --primary-2: #0a4fe0; /* hover / darker accent */
+
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(17, 19, 24, 0.08);
+    --maxw: 920px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: radial-gradient(1200px 800px at 20% -10%, rgba(11,95,255,0.08), transparent 60%),
+                radial-gradient(1000px 700px at 90% 10%, rgba(11,95,255,0.06), transparent 55%),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  }
+
+  .container{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 56px 20px 80px;
+  }
+
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .mark{
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), #00a3ff);
+    box-shadow: 0 8px 18px rgba(11,95,255,0.25);
+    flex: 0 0 auto;
+  }
+
+  .brand-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+  }
+
+  .brand-text strong{
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+  }
+  .brand-text span{
+    font-size: 0.85rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .actions{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    background: #fff;
+  }
+
+  .btn.primary{
+    background: var(--primary);
+    color: #fff;
+    border-color: transparent;
+  }
+  .btn.primary:hover{ background: var(--primary-2); }
+
+  .hero{
+    margin-top: 28px;
+    padding: 34px 26px;
+    border-radius: calc(var(--radius) + 6px);
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  h1{
+    margin: 0 0 8px;
+    font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .tagline{
+    margin: 0 0 14px;
+    font-size: 1.2rem;
+    color: var(--muted);
+  }
+
+  .lead{
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .grid{
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 14px;
+  }
+
+  .card{
+    grid-column: span 12;
+    padding: 18px 18px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .card h2{
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+  }
+
+  .card p{
+    margin: 0;
+    color: var(--text);
+    font-size: 1.02rem;
+  }
+
+  @media (min-width: 860px){
+    .card.half{ grid-column: span 6; }
+  }
+
+  footer{
+    margin-top: 34px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  a { color: var(--primary); }
+</style>
+
 </head>
 <body>
   <div class="container">
